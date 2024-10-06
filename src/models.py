@@ -9,8 +9,8 @@ class PredictionType(str, Enum):
 
 
 class GunType(str, Enum):
-    pistol = "pistol"
-    rifle = "rifle"
+    pistol = "Pistol"
+    rifle = "Rifle"
 
 
 class PersonType(str, Enum):

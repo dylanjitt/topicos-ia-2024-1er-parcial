@@ -7,7 +7,7 @@ class Settings(BaseSettings):
 
     api_name: str = "Gun Detection service"
     revision: str = "local"
-    od_model_path: str = "models/best.pt"
+    od_model_path: str = "/Users/dylanjitton/Documents/topicos IA/1er parcial/1er parcial/topicos-ia-2024-1er-parcial/models/best.pt"
     seg_model_path: str = "yolov8n-seg.pt"
     log_level: str = "DEBUG"
 
