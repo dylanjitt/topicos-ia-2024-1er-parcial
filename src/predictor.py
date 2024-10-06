@@ -139,6 +139,7 @@ class GunDetector:
         gun_detection = self.detect_guns(image_array, threshold=threshold)
         gun_bboxes = gun_detection.boxes
         
+        class_ids=[]
         #segmentation
         results=self.seg_model(image_array,conf=threshold)
         predictions=results[0]
