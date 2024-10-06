@@ -1,3 +1,6 @@
+#archivo para testear que las funciones de predictor funcionen correctamente, fase previa a implementación de endpoints
+#para que funcione correctamente, borrar 'src.' de las dependencias de predictor
+#volver a insertarlas una vez concluida las pruebas en este archivo. 
 from ultralytics import YOLO
 import numpy as np
 import cv2

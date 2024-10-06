@@ -1,3 +1,4 @@
+#prueba con herramientas base, previo a implementación de funciones en predeictor.
 import os
 from ultralytics import YOLO
 import numpy as np
