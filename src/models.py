@@ -38,7 +38,7 @@ class Segmentation(GeneralPrediction):
     n_detections: int
     polygons: list[list[list[int]]]
     boxes: list[list[int]]
-    labels: list[str]
+    labels: list[PersonType]
 
 
 class Gun(BaseModel):

@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import numpy as np
 import cv2
 from shapely.geometry import Polygon, box
-from src.models import Detection, PredictionType, Segmentation
+from src.models import Detection, PredictionType, Segmentation,PersonType
 from src.config import get_settings
 
 SETTINGS = get_settings()
@@ -52,7 +52,7 @@ def annotate_segmentation(image_array: np.ndarray, segmentation: Segmentation, d
 
     # Draw segmentation polygons
     for polygon, label in zip(segmentation.polygons, segmentation.labels):
-        if label == 'safe':
+        if label == PersonType.safe:
             color = ann_color_safe
         else:
             color = ann_color_danger
@@ -72,7 +72,7 @@ def annotate_segmentation(image_array: np.ndarray, segmentation: Segmentation, d
     # Optionally draw bounding boxes
     if draw_boxes:
         for box,label in zip(segmentation.boxes,segmentation.labels):
-            if label == 'safe':
+            if label == PersonType.safe:
                 color = ann_color_safe
             else:
                 color = ann_color_danger
@@ -80,7 +80,7 @@ def annotate_segmentation(image_array: np.ndarray, segmentation: Segmentation, d
             cv2.rectangle(image_array, (x1, y1), (x2, y2), color, 2)  # Blue boxes for detection
             cv2.putText(
             image_array,
-            f"{label}",
+            f"{label.value}",
             (x1, y1 - 5),
             cv2.FONT_HERSHEY_SIMPLEX,
             1,
@@ -174,9 +174,9 @@ class GunDetector:
                     gun_bbox = match_gun_bbox(points, gun_bboxes, max_distance=max_distance)
                     
                     if gun_bbox:
-                        labels.append('danger')
+                        labels.append(PersonType.danger)
                     else:
-                        labels.append('safe')
+                        labels.append(PersonType.safe)
 
                     n_detections += 1
                     polygons.append(points)
